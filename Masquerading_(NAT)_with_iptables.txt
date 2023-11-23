@@ -58,7 +58,14 @@ iface vmbr0 inet static
 
 
 
+# Restart/Reload Network
+Proxmox 7.0 ke atas
+$> ifreload -a
 
+# Jika Anda menginstal Proxmox VE di atas Debian, atau mengupgrade ke Proxmox VE 7.0 dari instalasi Proxmox VE yang lebih lama, pastikan ifupdown2 diinstal: apt install ifupdown2
+$> ifupdown2
+
+$> sudo systemctl restart networking
 
 # Buka port 80/443 ke ip vm 55.55.55.2
 $> iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 55.55.55.2
