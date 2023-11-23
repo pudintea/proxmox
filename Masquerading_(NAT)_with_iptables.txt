@@ -52,7 +52,9 @@ iface vmbr0 inet static
         post-down iptables -t raw -D PREROUTING -i fwbr+ -j CT --zone 1
 
 
-
+# Buka port 80/443 ke ip vm 55.55.55.2
+$> iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 55.55.55.2
+$> iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 55.55.55.2
 
 
 
