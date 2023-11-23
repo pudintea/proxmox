@@ -1,0 +1,51 @@
+==============================================================================================
+$> cp  /etc/network/interfaces  /etc/network/Asliii.interfaces.asliii
+$> nano  /etc/network/interfaces 
+
+auto lo
+iface lo inet loopback
+
+auto enp4s0
+#real IP address
+iface enp4s0 inet static
+        address 192.168.3.6/24
+        gateway 192.168.3.1
+
+auto vmbr0
+#private sub network
+iface vmbr0 inet static
+        address 55.55.55.0/28
+        gateway 55.55.55.1
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+
+        post-up   echo 1 > /proc/sys/net/ipv4/ip_forward
+        post-up   iptables -t nat -A POSTROUTING -s '55.55.55.0/28' -o enp4s0 -j MASQUERADE
+        post-down iptables -t nat -D POSTROUTING -s '55.55.55.0/28' -o enp4s0 -j MASQUERADE
+        post-up   iptables -t raw -I PREROUTING -i fwbr+ -j CT --zone 1
+        post-down iptables -t raw -D PREROUTING -i fwbr+ -j CT --zone 1
+
+==================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================== NAJZMI PUDINTEA ============================
