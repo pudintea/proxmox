@@ -5,7 +5,8 @@ $> iptables –delete-chain
 $> iptables –table nat –delete-chain
 
 
-
+$> iptables -V
+$> iptables -L
 
 
 
