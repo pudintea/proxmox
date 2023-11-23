@@ -1,0 +1,39 @@
+================================================================
+
+Periksa Listening port dengan netstat
+
+$> sudo netstat -tunlp
+
+Opsi yang digunakan dalam perintah ini memiliki arti sebagai berikut:
+-t – Tampilkan TCP ports.
+-u – Tampilkan UDP ports.
+-n – Tampilkan alamat numerik alih-alih resolving hosts.
+-l – Tampilkan hanya listening ports.
+-p – Tampilkan PID dan nama proses listener. Informasi ini hanya ditampilkan jika
+
+Jika Anda ingin memfilter hasilnya gunakan perintah grep
+$> sudo netstat -tnlp | grep :22
+
+Periksa Listening ports dengan ss
+==================================
+$> sudo ss -tunlp
+
+
+Periksa Listening Ports dengan lsof
+===================================
+$> sudo lsof -nP -iTCP -sTCP:LISTEN
+
+Opsi yang digunakan adalah sebagai berikut:
+
+-n – Jangan mengonversi nomor port ke nama port.
+-p – Jangan menyelesaikan nama host, tunjukkan alamat numerik.
+-iTCP -sTCP: LISTEN – Tampilkan hanya file jaringan dengan status TCP LISTEN.
+
+Untuk menemukan proses pada port tertentu, misalnya port 3306
+$> sudo lsof -nP -iTCP:3306 -sTCP:LISTEN
+
+
+
+
+
+===================================== NAJZMI PUDINTEA ==================================
