@@ -1,0 +1,38 @@
+
+$> cp /etc/network/interface /etc/network/asli.interface.asli
+$> nano /etc/network/interface
+
+auto vmbr2
+iface vmbr2 inet static
+        address 192.168.55.1/24
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+        post-up echo 1 > /proc/sys/net/ipv4/ip_forward
+        #Port HTTP
+        post-up iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 80 -j DNAT --to-destination 192.168.55.5:80
+        post-down iptables -t nat -D PREROUTING -i vmbr0 -p tcp --dport 80 -j DNAT --to-destination 192.168.55.5:80
+        #port HTTPS
+        post-up iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 443 -j DNAT --to-destination 192.168.55.5:443
+        post-down iptables -t nat -D PREROUTING -i vmbr0 -p tcp --dport 443 -j DNAT --to-destination 192.168.55.5:443
+        #MASQUERADE
+        post-up iptables -t nat -A POSTROUTING -s '192.168.55.0/24' -o vmbr0 -j MASQUERADE
+        post-down iptables -t nat -D POSTROUTING -s '192.168.55.0/24' -o vmbr0 -j MASQUERADE
+        post-up iptables -t raw -I PREROUTING -i fwbr+ -j CT --zone 1
+        post-down iptables -t raw -D PREROUTING -i fwbr+ -j CT --zone 1
+
+
+
+Setelah pengguna membuat konfigurasi jaringan bridge, verifikasi hasil konfigurasi tersebut.
+
+$> sudo ifup vmbr2
+$> ip address show dev vmbr2
+
+Kemudian silakan restart service network pada VM:
+$> sudo systemctl restart networking
+
+
+
+
+
+=================================== NAJZMI PUDINTEA ==========================================
