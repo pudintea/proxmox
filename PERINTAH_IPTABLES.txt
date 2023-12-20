@@ -19,5 +19,16 @@ GRUB_CMDLINE_LINUX="ipv6.disable=1"
 Restart
 $> update-grub
 
+==========================================================================
+#Port 80
+sudo iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 80 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
-======================= NAJZMI PUDINTEA ============================
+#Port 80,443
+sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+
+
+
+
+======================= NAJZMI PUDINTEA ==================================
