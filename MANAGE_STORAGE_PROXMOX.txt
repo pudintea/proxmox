@@ -1,0 +1,47 @@
+Proxmox 8.1.3 (Januari 2024)
+Setelah kita selesai dengan repository
+=======================================
+
+Me-Manage Penyimpanan/Storage
+
+Jika ada tambahan storege/Hardisk
+NODE > Disk > ZFS > Create: ZFS
+Name : silahkan tentukan (server-storage-pool)
+Add Storage : jangan dicentang aja, (karena kita akan membaginya untuk 3 kebutuhan)
+Raid Level : Single Disk
+Compression : lz4
+Pilih storage yang akan di add
+
+
+Silahkan lakukan lewat terminal atau SSH
+Kita buat 3 Storage (vmc, backup, iso)
+#> zfs list
+#> zfs create server-stogare-pool/vmc
+#> zfs list
+#> zfs create server-stogare-pool/bckp
+#> zfs create server-stogare-pool/iso
+#> zfs list
+
+Lanjut, pergi ke
+Datacenter > Storage > Add Directory
+
+1. ISO Pool
+Directory/Path : /server-storage-pool/iso
+Content :
+ - ISO Image
+ - Container Template
+
+2. Backup Pool
+Directory/Path : /server-storage-pool/bckp
+Content :
+ - VZDump Backup File
+ - Snippets
+
+3. VMC Pool (VM Container)
+Directory/Path : /server-storage-pool/vmc
+Content :
+ - Disimage
+ - Container
+
+
+=================================== pudin.my.id ============================================
