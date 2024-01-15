@@ -1,5 +1,5 @@
 
-$> nano /etc/apt/source.list
+$> nano /etc/apt/sources.list
 
 deb http://ftp.debian.org/debian bookworm main contrib
 
