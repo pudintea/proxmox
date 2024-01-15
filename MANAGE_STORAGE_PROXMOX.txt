@@ -23,7 +23,7 @@ Kita buat 3 Storage (vmc, backup, iso)
 #> zfs list
 
 Lanjut, pergi ke
-Datacenter > Storage > Add Directory
+Datacenter > Storage > ADD > Add Directory
 
 1. ISO Pool
 Directory/Path : /server-storage-pool/iso
@@ -42,6 +42,15 @@ Directory/Path : /server-storage-pool/vmc
 Content :
  - Disimage
  - Container
+
+Datacenter > Storage > ADD > NFS
+Kebutuhan untuk NFS Saya
+Content :
+ - VZDump Backup File
+ - Snippets
+ - Disimage
+ - Container
+
 
 
 =================================== pudin.my.id ============================================
