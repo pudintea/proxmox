@@ -40,7 +40,7 @@ Content :
 3. VMC Pool (VM Container)
 Directory/Path : /server-storage-pool/vmc
 Content :
- - Disimage
+ - Disk image
  - Container
 
 Datacenter > Storage > ADD > NFS
@@ -48,7 +48,7 @@ Kebutuhan untuk NFS Saya
 Content :
  - VZDump Backup File
  - Snippets
- - Disimage
+ - Disk image
  - Container
 
 
