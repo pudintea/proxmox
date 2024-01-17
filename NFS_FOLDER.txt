@@ -33,7 +33,7 @@ mnt/nfsprox5 192.168.3.0/255.255.255.0(rw)
 ubuntu-vm-100-disk-0.qcow2
 dns-vm100-disk.qcow2
 ------
-/SUBAGTATA/nfs-ypia
+/SUBAGTATA/nfs-yap
 
 --------------------------------------------
 
