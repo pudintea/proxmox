@@ -1,0 +1,49 @@
+
+
+# apt-get update
+# apt-get install nfs-common nfs-kernel-server
+# cd /mnt
+# ls
+# mkdir /mnt/nfsproxmox
+# chmod 777 /mnt/nfsproxmox
+# nano /etc/exports
+- mnt/nfsproxmox 192.168.3.0/255.255.255.0(rw) // semua ip 3.0 bisa aksess
+# reboot
+# cat /etc/pve/storage.cfg
+---------------------------
+mkdir /mnt/nfsprox5
+mkdir /mnt/nfsprox6
+
+/mnt/datahdd2/nfsprox7 192.168.3.0/255.255.255.0(rw)
+
+mnt/nfsprox5 192.168.3.0/255.255.255.0(rw)
+
+---------------------------------------------
+# find / -name "100"
+
+# cd /mnt/pve/nfs-yap/images/100
+# cp /mnt/pve/nfs-yap/ubuntu12.04-AAS-flat.vmdk /mnt/pve/nfs-yap/images/100/ubuntu12.04-AAS.vmdk
+# cp tomcat-ubuntu10.qcow2 /mnt/pve/nfs-yap/images/104/.
+# qemu-img convert -p -f vmdk namafile.vmdk -O qcow2 namafilehasilconvertnya.qcow2
+# nano /etc/pve/nodes/proxmox5/qemu-server/100.conf
+
+# nano /etc/pve/nodes/proxmox5/lxc/100.conf
+# cd /dev/pve
+
+ubuntu-vm-100-disk-0.qcow2
+dns-vm100-disk.qcow2
+------
+/SUBAGTATA/nfs-ypia
+
+--------------------------------------------
+
+qemu-img convert -p -f vmdk ubuntu12.04-AAS.vmdk -O qcow2 ubuntu12.04-AAS.qcow2
+qemu-img convert -p -f vmdk ManajemenSekolah_SMP.vmdk -O qcow2 ManajemenSekolah_SMP.qcow2
+
+
+# ifconfig
+# ip link
+# ls /sys/class/net
+
+
+====================================== PUDIN.MY.ID ============================================================================
