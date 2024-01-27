@@ -1,0 +1,42 @@
+Baru saja mencoba menginstal ulang cnMaestro 2.2 -on Premises di cluster Proxmox 5.x kami dan berjalan lancar.
+
+Bagi yang berminat, ada tutorial kecilnya.
+
+1) Unggah *.ova ke mesin Proxmox melalui GUI (saya harus mengganti nama file do ini menjadi .iso) atau melalui SCP.
+
+2) Hapus tarnya: tar -xvf *.ova
+
+3) Buat VM dengan sumber daya yang diperlukan, dalam kasus saya itu adalah 4GB RAM, 2 CPU, adaptor ethernet E1000 dan beberapa penyimpanan. Jangan memulainya dulu.
+
+4) Dari konsol Proxmox (bukan VM yang dibuat) sekarang impor kedua disk:
+
+#> qm importdisk <VMid> cnmaestro-on-premises_2.2.0-r60_amd64-disk1.vmdk <penyimpanan> -format qcow2
+#> qm importdisk <VMid> cnmaestro-on-premises_2.2.0-r60_amd64-disk2.vmdk <penyimpanan> -format qcow2
+
+Ini membutuhkan waktu dan tidak boleh ada kesalahan.
+
+VMid adalah nomor VM Anda, dalam kasus saya adalah 111.
+
+<storage> adalah nama penyimpanan Anda (bisa lokal atau seperti NFS).
+
+5) Dari GUI Proxmox, hapus disk yang Anda buat saat mendefinisikan VM Anda, tidak ada gunanya.
+Anda akan melihat dua disk yang tidak terpasang. Pada opsi Perangkat Keras VM, klik pada disk1 dan Edit-Tambah. Hal yang sama pada disk2.
+Sekarang Anda telah memasang kedua disk. Ini akan terlihat seperti ini:
+
+
+=============================================================================================
+2024
+
+#> qm importdisk 109 cnmaestro-on-premises_3.0.0-r34_amd64-disk001.vmdk nfs-3-18 -format qcow2
+#> qm importdisk 109 cnmaestro-on-premises_3.0.0-r34_amd64-disk002.vmdk nfs-3-18 -format qcow2
+
+
+
+
+
+
+
+
+
+
+================================================= PUDIN.MY.ID ========================================================================
