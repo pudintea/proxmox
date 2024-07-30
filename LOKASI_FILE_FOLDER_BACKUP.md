@@ -7,4 +7,5 @@
 <pre>
   <code>find / -type f -name "vzdump-qemu-103-2024_07_30-13_17_24.vma.zst"</code>
 </pre>
+<p>Gunakan f untuk mencari file, ganti dengan d untuk mencari folder/directory</p>
 <p>https://pudin.my.id</p>
