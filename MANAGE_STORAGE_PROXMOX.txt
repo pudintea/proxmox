@@ -16,10 +16,10 @@ Pilih storage yang akan di add
 Silahkan lakukan lewat terminal atau SSH
 Kita buat 3 Storage (vmc, backup, iso)
 #> zfs list
-#> zfs create server-stogare-pool/vmc
+#> zfs create server-storage-pool/vmc
 #> zfs list
-#> zfs create server-stogare-pool/bckp
-#> zfs create server-stogare-pool/iso
+#> zfs create server-storage-pool/bckp
+#> zfs create server-storage-pool/iso
 #> zfs list
 
 Lanjut, pergi ke
