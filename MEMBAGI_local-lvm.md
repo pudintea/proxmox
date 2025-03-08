@@ -172,4 +172,93 @@ Setelah langkah-langkah ini, kamu akan memiliki:
 
 Silakan coba, dan beri tahu jika ada kendala! 🚀
 
+<h1>Tambahan Lagi</h1>
+Error ini terjadi karena **Volume Group (VG) "pve" tidak memiliki cukup ruang kosong** untuk membuat Logical Volume (LV) baru dengan ukuran 512GB.  
+
+Mari kita analisis dan perbaiki masalah ini.
+
+---
+
+## **1. Cek Kapasitas VG yang Tersedia**
+Gunakan perintah berikut untuk melihat ruang kosong di Volume Group (`pve`):
+
+```bash
+vgs
+```
+Perhatikan **Free PE / Size**. Jika tidak mencukupi 512GB, maka kita harus membebaskan ruang terlebih dahulu.
+
+---
+
+## **2. Cek LV yang Masih Ada**
+Gunakan perintah berikut untuk melihat daftar Logical Volume:
+
+```bash
+lvs
+```
+Pastikan **`pve/data` sudah benar-benar dihapus**. Jika masih ada, hapus dengan:
+
+```bash
+lvremove pve/data
+```
+
+---
+
+## **3. Cek Physical Volume (PV)**
+Cek apakah ada partisi yang masih teralokasi ke VG `pve`:
+
+```bash
+pvdisplay
+```
+Jika masih ada partisi yang terpakai penuh, kita harus mengecilkan atau menghapus LV yang tidak digunakan.
+
+---
+
+## **4. Resize Volume Group Jika Perlu**
+Jika ada partisi yang masih digunakan, kita bisa memperbesar Volume Group dengan cara menambah physical volume (PV) atau mengecilkan LV yang ada.
+
+Jika **pve/data_tmeta** atau **pve/data_tdata** masih ada, hapus dulu:
+
+```bash
+lvremove pve/data_tmeta
+lvremove pve/data_tdata
+```
+
+Lalu cek ulang apakah ada free space dengan:
+
+```bash
+vgs
+```
+
+Jika sudah cukup, ulangi perintah untuk membuat LV baru:
+
+```bash
+lvcreate -L 512G -n storage-pdn pve
+```
+
+---
+
+## **5. Jika Masih Gagal, Coba Alokasi Maksimal**
+Jika error masih muncul, kemungkinan **free space kurang sedikit** dari 512GB. Coba gunakan perintah ini untuk mengalokasikan **semua free space yang tersisa**:
+
+```bash
+lvcreate -l 100%FREE -n storage-pdn pve
+```
+
+Lalu format volume tersebut agar bisa digunakan:
+
+```bash
+mkfs.ext4 /dev/pve/storage-pdn
+```
+
+Kemudian ikuti langkah **mounting dan konfigurasi di Proxmox** seperti yang sudah saya jelaskan sebelumnya.
+
+---
+
+## **Kesimpulan**
+✅ Error terjadi karena tidak ada cukup ruang kosong di VG `pve`.  
+✅ Pastikan `local-lvm` (pve/data) sudah dihapus.  
+✅ Gunakan `vgs` dan `lvs` untuk mengecek ruang yang tersedia.  
+✅ Jika free space kurang dari 512GB, coba `lvcreate -l 100%FREE` agar menggunakan semua ruang yang tersisa.  
+
+Silakan coba dan beri tahu hasilnya! 🚀
 ================= END ========================
