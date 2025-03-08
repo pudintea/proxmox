@@ -1,4 +1,4 @@
-Link Doc : https://chatgpt.com/share/67cbd6d3-fca0-8005-9d9c-e8cc8cf08841
+Link Doc : https://chatgpt.com/share/67cbd6d3-fca0-8005-9d9c-e8cc8cf08841<br/>
 Untuk membagi `local-lvm` menjadi dua bagian, yaitu 512GB untuk tetap sebagai `local-lvm` dan 512GB untuk penyimpanan baru yang bisa digunakan untuk file `qcow2`, kita perlu melakukan beberapa langkah:
 
 ### **1. Cek Storage LVM yang Ada**
