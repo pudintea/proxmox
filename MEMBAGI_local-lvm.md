@@ -75,7 +75,8 @@ Sekarang, kamu memiliki dua storage:
 - **storage-qcow** (512GB) untuk menyimpan disk berbasis `qcow2`.
 
 Silakan coba langkah-langkah ini, dan beri tahu saya jika ada kendala! 🚀
-=========== <h1>TAMBAHAN</h1> =========
+
+<h1>TAMBAHAN</h1>
 
 Error **"Thin pool volumes pve/data_tdata cannot be reduced in size yet"** terjadi karena `local-lvm` di Proxmox menggunakan **LVM Thin Pool**, yang tidak bisa langsung dikurangi ukurannya seperti LVM biasa.  
 
