@@ -3,6 +3,8 @@ UPDATE dari Proxmox 8 ke proxmox 9
 Proxmox Helper Script
 https://community-scripts.github.io/ProxmoxVE/scripts
 
+VIDEO : https://www.youtube.com/watch?v=Vp5eabZZmbw
+
 PENTING 
 - Jangan lupa BACKUP.
 
