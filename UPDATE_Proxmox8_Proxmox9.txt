@@ -1,0 +1,51 @@
+UPDATE dari Proxmox 8 ke proxmox 9
+==================================
+Proxmox Helper Script
+https://community-scripts.github.io/ProxmoxVE/scripts
+
+PENTING 
+- Jangan lupa BACKUP.
+
+Lihat versi : vpeversion
+Minimal Versi 8.4.1
+
+
+Mulai
+> apt-get update
+> apt-get dist-upgrade -y
+> reboot
+
+Setelah Reboot
+> vpeversion
+Jadi Versi 8.4.14
+
+Cek dulu sebelum upgrade
+> pve8to9
+*) Pastikan tidak ada error.
+
+
+
+> nano /etc/apt/sources.list
+
+Kita ubah dari repositori bookworm ke trixie dengan perintah
+> sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+
+Tidak penting jika pake yang gratis
+> sed -i 's/bookworm/trixie/g' /etc/apt/sources.list.d/pve-enterprise.list
+
+Atau hapus saja karena tidak berlangganan
+> rm /etc/apt/sources.list.d/pve-enterprise.list
+> rm /etc/apt/sources.list.d/ceph.list
+
+Kita perbarui sekarang ke versi 9
+> apt update
+> apt-get dist-upgrade
+1. > Y
+2. > :q (Keluar)
+3. > N
+4. > N (enter default N)
+5. Selesai
+> reboot
+
+
+============ PUDIN SAEPUDIN ================
